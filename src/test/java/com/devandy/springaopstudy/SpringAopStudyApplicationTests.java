@@ -1,6 +1,7 @@
 package com.devandy.springaopstudy;
 
 import com.devandy.springaopstudy.board.BoardService;
+import com.devandy.springaopstudy.user.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,10 +18,18 @@ class SpringAopStudyApplicationTests {
     @Autowired
     private BoardService boardService;
 
+    @Autowired
+    private UserService userService;
+
     @Test
     @DisplayName("게시글 불러오기 테스트")
     public void getBoards() throws Exception {
         assertThat(boardService.getBoards().size()).isEqualTo(10);
     }
 
+    @Test
+    @DisplayName("사용자 불러오기 테스트")
+    void getUsers() {
+        assertThat(userService.getUsers().size()).isEqualTo(10);
+    }
 }

@@ -38,7 +38,7 @@ public class SpringAopStudyApplication implements CommandLineRunner {
 
     @GetMapping("/users")
     public List<User> getUsers() {
-        return userService.getDataAll();
+        return userService.getUsers();
     }
 
     @Override
