@@ -1,12 +1,13 @@
 package com.devandy.springaopstudy.board;
 
+import com.devandy.springaopstudy.aspect.SuperPerformance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class BoardService extends BoardPerformance{
+public class BoardService extends SuperPerformance<Board> {
 
     @Autowired
     private BoardRepository boardRepository;

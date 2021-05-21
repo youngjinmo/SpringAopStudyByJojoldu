@@ -1,8 +1,8 @@
-package com.devandy.springaopstudy.user;
+package com.devandy.springaopstudy.aspect;
 
 import java.util.List;
 
-public abstract class UserPerformance {
+public abstract class SuperPerformance<T> {
     private Long before() {
         return System.currentTimeMillis();
     }
@@ -12,12 +12,12 @@ public abstract class UserPerformance {
         System.out.println("수행 시간 : "+(end-start));
     }
 
-    private List<User> getUsers() {
+    public List<T> getDataAll() {
         long start = before();
-        List<User> users = findAll();
+        List<T> datas = findAll();
         after(start);
-        return users;
+        return datas;
     }
 
-    public abstract List<User> findAll();
+    public abstract List<T> findAll();
 }
