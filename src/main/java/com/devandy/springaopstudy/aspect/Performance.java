@@ -3,11 +3,18 @@ package com.devandy.springaopstudy.aspect;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class Performance {
 
-    @Around("execution(* com.devandy.springaopstudy.board.BoardService.getBoards(..))")
+    @Pointcut("execution(* com.devandy.springaopstudy.board.BoardService.getBoards(..))")
+    public void getBoards() { }
+
+    @Pointcut("execution(* com.devandy.springaopstudy.user.UserService.getUsers(..))")
+    public void getUsers() { }
+
+    @Around("getBoards() || getUsers()")
     public Object calculaterPerformanceTime(ProceedingJoinPoint jointPoint) {
         Object result = null;
         try {
