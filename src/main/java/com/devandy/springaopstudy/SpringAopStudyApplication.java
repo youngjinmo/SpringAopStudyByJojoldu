@@ -45,14 +45,9 @@ public class SpringAopStudyApplication implements CommandLineRunner {
         return userService.getUsers();
     }
 
-    @Bean
-    public Performance performance() {
-        return new Performance();
-    }
-
     @Override
-    public void run(String... args) throws Exception {
-        for (int i = 1; i <= 10; i++) {
+    public void run(String... args) {
+        for (int i = 0; i < 10; i++) {
             boardRepository.save(new Board(i+"번째 게시글의 제목", i+"번째 게시글의 내용"));
             userRepository.save(new User(i+"@gmail.com",i+"번째 사용자"));
         }

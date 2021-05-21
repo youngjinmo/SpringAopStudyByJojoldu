@@ -4,6 +4,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.context.annotation.Bean;
 
 @Aspect
 public class Performance {
@@ -13,6 +14,11 @@ public class Performance {
 
     @Pointcut("execution(* com.devandy.springaopstudy.user.UserService.getUsers(..))")
     public void getUsers() { }
+
+    @Bean
+    public Performance performance() {
+        return new Performance();
+    }
 
     @Around("getBoards() || getUsers()")
     public Object calculaterPerformanceTime(ProceedingJoinPoint jointPoint) {
