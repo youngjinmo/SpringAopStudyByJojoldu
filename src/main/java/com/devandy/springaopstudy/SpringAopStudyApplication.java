@@ -33,7 +33,7 @@ public class SpringAopStudyApplication implements CommandLineRunner {
 
     @GetMapping("/boards")
     public List<Board> getBoards() {
-        return boardService.getDataAll();
+        return boardService.getBoards();
     }
 
     @GetMapping("/users")
