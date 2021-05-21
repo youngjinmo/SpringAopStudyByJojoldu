@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BoardService {
+public class BoardService extends BoardPerformance{
 
     @Autowired
     private BoardRepository boardRepository;
@@ -18,5 +18,10 @@ public class BoardService {
 
         System.out.println("수행 시간 : "+(end-start));
         return boards;
+    }
+
+    @Override
+    public List<Board> findAll() {
+        return boardRepository.findAll();
     }
 }

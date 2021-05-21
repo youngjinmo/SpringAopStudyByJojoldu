@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService extends UserPerformance{
 
     @Autowired
     private UserRepository userRepository;
@@ -18,5 +18,10 @@ public class UserService {
 
         System.out.println("수행 시간 : "+(end-start));
         return users;
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 }
