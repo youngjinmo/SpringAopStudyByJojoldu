@@ -1,5 +1,6 @@
 package com.devandy.springaopstudy;
 
+import com.devandy.springaopstudy.aspect.Performance;
 import com.devandy.springaopstudy.board.Board;
 import com.devandy.springaopstudy.board.BoardRepository;
 import com.devandy.springaopstudy.board.BoardService;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +20,7 @@ import java.util.List;
 
 @SpringBootApplication
 @RestController
+@EnableAspectJAutoProxy
 public class SpringAopStudyApplication implements CommandLineRunner {
 
     @Autowired
@@ -39,6 +43,11 @@ public class SpringAopStudyApplication implements CommandLineRunner {
     @GetMapping("/users")
     public List<User> getUsers() {
         return userService.getUsers();
+    }
+
+    @Bean
+    public Performance performance() {
+        return new Performance();
     }
 
     @Override
