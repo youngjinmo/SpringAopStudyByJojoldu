@@ -12,6 +12,11 @@ public class BoardService {
     private BoardRepository boardRepository;
 
     public List<Board> getBoards() {
-        return boardRepository.findAll();
+        long start = System.currentTimeMillis();
+        List<Board> boards = boardRepository.findAll();
+        long end = System.currentTimeMillis();
+
+        System.out.println("수행 시간 : "+(end-start));
+        return boards;
     }
 }
